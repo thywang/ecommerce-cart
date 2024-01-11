@@ -78,38 +78,6 @@ async function migrateCart(old_cart_id, new_cart_id) {
   }
   console.log("Batch delete successful!");
 
-  // if (dynamoCartItems && dynamoCartItems.length > 0) {
-  //   const putRequests = dynamoCartItems.map((item) => {
-  //     return {
-  //       PutRequest: {
-  //         Item: {
-  //           cart_id: new_cart_id,
-  //           product_id: item.product_id,
-  //           quantity: item.quantity,
-  //           expiration_time: ttl,
-  //         },
-  //       },
-  //     };
-  //   });
-  //   const batchWriteParams = {
-  //     RequestItems: {
-  //       [cartTable]: putRequests,
-  //     },
-  //   };
-
-  //   await dynamodb
-  //     .batchWrite(batchWriteParams, function (err, data) {
-  //       if (err) {
-  //         console.log("Batch put unsuccessful ...");
-  //         console.log(err, err.stack); // an error occurred
-  //       } else {
-  //         console.log("Batch put successful ...");
-  //         console.log(data); // successful response
-  //       }
-  //     })
-  //     .promise();
-  // }
-
   return util.buildResponse(200, {
     cart_id: new_cart_id,
   });
